@@ -1,0 +1,8 @@
+- name: build docker images
+  docker_image: path={{ source_dir }} name=kibana_img state=build
+
+- name: stop & remove container nps
+  docker: image=kibana_img name=kibana_cont state=absent
+
+- name: start new container of latest nps
+  docker: image=kibana_img name=kibana_cont ports=5601:5601 state=started

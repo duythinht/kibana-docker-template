@@ -1,0 +1,5 @@
+[develop]
+10.60.3.32
+
+[develop:vars]
+ansible_ssh_user=thinh

@@ -1,0 +1,12 @@
+- name: download kibana
+  get_url: url=https://download.elastic.co/kibana/kibana/kibana-4.1.1-linux-x64.tar.gz dest=/var/app/kibana.tar.gz
+
+- name: extract kibana
+  unarchive: src=/var/app/kibana.tar.gz dest={{ source_dir }} copy=no
+
+- name: copy Dockerfile to server
+  copy: src={{ playbook_dir }}/Dockerfile dest={{ source_dir }}/Dockerfile
+
+- name: copy config to server
+  copy: src={{ playbook_dir }}/config dest={{ source_dir }}/kibana-4.1.1-linux-x64/
+
